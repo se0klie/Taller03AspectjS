@@ -7,4 +7,9 @@ public aspect Logger {
     	System.out.println("**** User created ****");
     }
     
+    pointcut loginAndLogout():call(*(login*(..)||logout*(..)));
+    
+    after() : loginAndLogout(){
+    	
+    }
 }
