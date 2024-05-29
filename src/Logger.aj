@@ -26,13 +26,12 @@ public aspect Logger {
     
     after(User user) : loginAndLogout(user){
     	String action= thisJoinPoint.getSignature().getName().startsWith("effective")?"Iniciar sesión":"Cerrar sesión";
-    	
     	logToFile("Log.txt", action, user.getNickname());
     }
     
     private void logToFile(String fileName, String action, String username) {
     	try(BufferedWriter writer= new BufferedWriter(new FileWriter(fileName,true))){
-    		writer.write("Sesion iniciada por usuario" + username + "Hora:" + LocalDateTime.now() + "\n");
+    		writer.write("Sesion iniciada por usuario " + username + " Hora: " + LocalDateTime.now() + "\n");
     	}catch(IOException e) {
     		e.printStackTrace();
     	}
