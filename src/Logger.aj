@@ -8,13 +8,13 @@ public aspect Logger {
     //  	System.out.println("**** User created ****");
     //}
 
-    pointcut registered() : call(*signUp(..));
+    pointcut registered() : call(* signUp*(..) );
     after() : registered() {
 
         
     }
     
-    pointcut loginAndLogout():call(*(login*(..)||logout*(..)));
+    pointcut loginAndLogout():call(* log*(..) );
     
     after() : loginAndLogout(){
     	
