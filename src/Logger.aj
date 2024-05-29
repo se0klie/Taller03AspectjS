@@ -9,12 +9,14 @@ public aspect Logger {
     //}
 
     pointcut registered() : call(* *.successfulSignUp(..));
+
     after() : registered() {
 
         
     }
-    
+
     pointcut loginAndLogout():call(* log*(..));
+
     
     after() : loginAndLogout(){
     	
